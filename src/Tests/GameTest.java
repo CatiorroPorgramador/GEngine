@@ -1,7 +1,6 @@
 package src.Tests;
 
 import src.Engine.Character;
-import src.Engine.Vector2;
 import src.Engine.Sprite;
 import src.Engine.Shape;
 
@@ -10,9 +9,11 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.Dimension;
@@ -26,7 +27,7 @@ public class GameTest extends JFrame
     public GameTest()
     {
         add(new test_game());
-        setTitle("title");
+        setTitle("Test Game Engine - Shape, Character and Collision");
         setSize(new Dimension(640, 480));
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -42,25 +43,29 @@ public class GameTest extends JFrame
         Runtime rt;
         Timer timer;
 
-        Shape a;
-
         Shape background;
+        Shape enemy;
 
         Character player;
 
         public test_game()
         {
+            // Game Loop Settings
             rt = Runtime.getRuntime();
             this.timer = new Timer(5, this);
             timer.start();
 
+            addKeyListener(new keyboard());
+
+            // Game Video Settings
             setFocusable(true);
             setDoubleBuffered(true);
 
-            addKeyListener(new keyboard());
-            a = new Shape(Color.gray, new Rectangle(0, 0, 640, 480));
-            background = new Shape(Color.BLUE, new Rectangle(100, 0, 50, 50));
-        
+            // Objects
+            background = new Shape(Color.GRAY, new Rectangle(0, 0, 640, 480));
+
+            enemy = new Shape(Color.BLUE, new Rectangle(100, 0, 60, 60));
+
             player = new Character(new Rectangle(10, 10, 50, 50));
             player.load("Player.png");
         }
@@ -69,9 +74,9 @@ public class GameTest extends JFrame
         {
             Graphics2D graphics = (Graphics2D) g;
 
-            a.render(graphics);
-
             background.render(graphics);
+
+            enemy.render(graphics);
 
             player.render(graphics);
 
@@ -83,9 +88,9 @@ public class GameTest extends JFrame
         {
             player.physics_update();
 
-            if (player.rect.intersects(background.rect))
+            if (player.rect.intersects(enemy.rect))
             {
-                System.out.println("x");
+                enemy.rect.x = 640;
             }
 
             repaint();

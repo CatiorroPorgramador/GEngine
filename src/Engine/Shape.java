@@ -11,13 +11,16 @@ public class Shape
     public Color color = Color.BLACK;
     public Rectangle rect = new Rectangle();
 
+    public boolean alive = true;
+
     // Constructor
     public Shape(Color color, Rectangle rect)
     {
         this.color = color;
         this.rect = rect;
     }
-
+    
+    // Methods
     public void init() {}
 
     public void update() {}
@@ -26,5 +29,10 @@ public class Shape
     {
         graphics.setColor(this.color);
         graphics.fillRect(rect.x, rect.y, rect.width, rect.height);
+    }
+
+    public void destroy()
+    {
+        alive = false;
     }
 }
