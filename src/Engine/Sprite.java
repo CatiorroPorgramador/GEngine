@@ -7,7 +7,7 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
-public class Sprite
+public abstract class Sprite
 {
     public Image texture = null;
     public Rectangle rect = new Rectangle();
@@ -23,7 +23,12 @@ public class Sprite
     {
         texture = new ImageIcon(texture_filename).getImage();
     }
+    
+    public void load_spritesheet(String texture_filename)
+    {
 
+    }
+    
     public void render(Graphics2D graphics)
     {
         if (texture != null)
@@ -36,5 +41,10 @@ public class Sprite
             graphics.setColor(Color.BLUE);
             graphics.fillRect(rect.x, rect.y, rect.width, rect.height);
         }
+    }
+
+    public boolean is_colliding(Rectangle rect)
+    {
+        return this.rect.intersects(rect);
     }
 }

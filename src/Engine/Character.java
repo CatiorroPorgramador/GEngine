@@ -4,7 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.Color;
 
-public class Character extends Sprite
+public abstract class Character extends Sprite
 {
     public Vector2 movement_direction = new Vector2();
 
@@ -31,8 +31,9 @@ public class Character extends Sprite
         graphics.fillRect(this.rect.x, this.rect.y, this.rect.width, this.rect.height);
     }
 
-    // Controls
-    public void key_pressed(int key) {}
+    // Abstract Methods
+    public abstract void update();
 
-    public void key_released(int key) {}
+    public abstract void key_pressed(int key);
+    public abstract void key_released(int key);
 }

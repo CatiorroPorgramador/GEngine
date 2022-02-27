@@ -1,0 +1,5 @@
+animations for character
+camera class
+
+observações:
+da pra usar a scale do graphis para otimizar o jogo se pá

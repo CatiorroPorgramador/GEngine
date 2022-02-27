@@ -5,7 +5,7 @@ import java.awt.Rectangle;
 
 import java.awt.Color;
 
-public class Shape 
+public abstract class Shape
 {
     // Appearance
     public Color color = Color.BLACK;
@@ -21,9 +21,9 @@ public class Shape
     }
     
     // Methods
-    public void init() {}
+    public abstract void init();
 
-    public void update() {}
+    public abstract void update();
 
     public void render(Graphics2D graphics) 
     {
@@ -34,5 +34,10 @@ public class Shape
     public void destroy()
     {
         alive = false;
+    }
+
+    public boolean is_colliding(Rectangle rect)
+    {
+        return this.rect.intersects(rect);
     }
 }
