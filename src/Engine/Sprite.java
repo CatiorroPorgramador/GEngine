@@ -12,6 +12,8 @@ public abstract class Sprite
     public Image texture = null;
     public Rectangle rect = new Rectangle();
 
+    public boolean alive = true;
+
     // Constructor
     public Sprite(Rectangle rect) 
     {
@@ -24,16 +26,13 @@ public abstract class Sprite
         texture = new ImageIcon(texture_filename).getImage();
     }
     
-    public void load_spritesheet(String texture_filename)
-    {
-
-    }
+    public void load_spritesheet(String texture_filename) {}
     
     public void render(Graphics2D graphics)
     {
         if (texture != null)
         {
-            graphics.drawImage (this.texture, rect.x, rect.y, rect.width, rect.height, null);
+            graphics.drawImage(this.texture, rect.x, rect.y, rect.width, rect.height, null);
         }
         
         else
@@ -46,5 +45,10 @@ public abstract class Sprite
     public boolean is_colliding(Rectangle rect)
     {
         return this.rect.intersects(rect);
+    }
+
+    public void destroy()
+    {
+        alive = false;
     }
 }

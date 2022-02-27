@@ -21,23 +21,19 @@ public abstract class Shape
     }
     
     // Methods
-    public abstract void init();
-
-    public abstract void update();
-
     public void render(Graphics2D graphics) 
     {
         graphics.setColor(this.color);
         graphics.fillRect(rect.x, rect.y, rect.width, rect.height);
     }
 
-    public void destroy()
-    {
-        alive = false;
-    }
-
     public boolean is_colliding(Rectangle rect)
     {
         return this.rect.intersects(rect);
+    }
+
+    public void destroy()
+    {
+        alive = false;
     }
 }
