@@ -7,8 +7,9 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
-public abstract class Sprite
+public class Sprite
 {
+    // Appearance
     public Image texture = null;
     public Rectangle rect = new Rectangle();
 

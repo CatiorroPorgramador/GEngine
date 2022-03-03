@@ -4,7 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.Color;
 
-public abstract class Character extends Sprite
+public class Character extends Sprite
 {
     public Vector2 movement_direction = new Vector2();
 
@@ -32,8 +32,8 @@ public abstract class Character extends Sprite
     }
 
     // Abstract Methods
-    public abstract void update();
+    public void update(){}
 
-    public abstract void key_pressed(int key);
-    public abstract void key_released(int key);
+    public void key_pressed(int key){}
+    public void key_released(int key){}
 }

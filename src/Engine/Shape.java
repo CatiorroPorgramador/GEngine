@@ -5,7 +5,7 @@ import java.awt.Rectangle;
 
 import java.awt.Color;
 
-public abstract class Shape
+public class Shape
 {
     // Appearance
     public Color color = Color.BLACK;
@@ -14,10 +14,10 @@ public abstract class Shape
     public boolean alive = true;
 
     // Constructor
-    public Shape(Color color, Rectangle rect)
+    public Shape(Rectangle rect, Color color)
     {
-        this.color = color;
         this.rect = rect;
+        this.color = color;
     }
     
     // Methods
