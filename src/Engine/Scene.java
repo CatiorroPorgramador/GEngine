@@ -13,6 +13,9 @@ public class Scene extends JPanel implements ActionListener
 
     public Scene()
     {
+        setDoubleBuffered(true);
+        setFocusable(true);
+
         timer = new Timer(5, this);
         runtime = Runtime.getRuntime();
 
