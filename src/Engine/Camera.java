@@ -9,9 +9,9 @@ public class Camera
     public boolean smooth;
 
     // Constructor
-    public Camera()
+    public Camera(Group objects)
     {
-        
+    	this.objects = objects;
     }
 
     // Methods
@@ -27,7 +27,7 @@ public class Camera
             Entity current = this.objects.get(i);
 
             current.rect.x += vector.x;
-            current.rect.x += vector.y;
+            current.rect.y += vector.y;
         }
     }
 
