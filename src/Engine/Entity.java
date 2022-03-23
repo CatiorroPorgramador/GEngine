@@ -6,7 +6,10 @@ import java.awt.Rectangle;
 public class Entity
 {
     // Appearence
-    public boolean alive = true;
+    public boolean alive, visible = true;
+
+    public String name;
+
     public Rectangle rect = new Rectangle();
     
     // Methods
@@ -15,10 +18,7 @@ public class Entity
         return this.rect.intersects(rect);
     }
 
-    public void render(Graphics2D graphics) 
-    {
-        System.out.print("s");
-    }
+    public void render(Graphics2D graphics) {}
 
     public void destroy()
     {
