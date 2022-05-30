@@ -1,30 +1,35 @@
 package src.Engine;
 
-import javax.swing.JPanel;
-import javax.swing.Timer;
+import java.awt.Graphics2D;
 
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-
-public class Scene extends JPanel implements ActionListener
+public class Scene
 {
-    public Timer timer;
-    public Runtime runtime;
+    public String name;
+
+    // Constructor
+    public Scene(String name)
+    {
+        this.name = name;
+    }
 
     public Scene()
     {
-        setDoubleBuffered(true);
-        setFocusable(true);
-
-        timer = new Timer(5, this);
-        runtime = Runtime.getRuntime();
-
-        timer.start();
+        this.name = "No Name Scene";
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e)
+    // Methods
+    public void init()
     {
-        
+        System.out.println("Scene "+this.name);
+    }
+
+    public void update()
+    {
+
+    }
+
+    public void render(Graphics2D graphics) 
+    {
+
     }
 }

@@ -38,4 +38,18 @@ public class Vector2
 			this.y = this.y*s;
 		}
 	}
-}
+
+	public Vector2 normalized()
+	{
+		Vector2 vec2_normalized = new Vector2();
+
+		if (vec2_normalized.get_length() != 0.0)
+		{
+			float s = 1.f / (float) get_length();
+			vec2_normalized.x = vec2_normalized.x*s;
+			vec2_normalized.y = vec2_normalized.y*s;
+		}
+
+		return(vec2_normalized);
+	}
+} 

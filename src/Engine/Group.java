@@ -2,7 +2,6 @@ package src.Engine;
 
 import java.util.ArrayList;
 
-@SuppressWarnings("serial")
 public class Group extends ArrayList<Entity>
 {
     // Constructor

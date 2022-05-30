@@ -6,14 +6,18 @@ import java.awt.Color;
 import java.awt.Image;
 
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 public class Sprite extends Entity
 {
     // Appearance
-    public Image texture = null;
+    public BufferedImage texture = null;
     public int frame, hframes, vframes;    // ..., Horizontal Frames, Vertical Frames
+    float angle;
     
     // Constructor
     public Sprite(Rectangle rect)
@@ -21,30 +25,35 @@ public class Sprite extends Entity
         this.rect = rect;
         hframes = 1;
         vframes = 1;
+        frame = 0;
+        angle = 90f;
     }
 
     // Methods
     public void load(String texture_filename)
     {
-        texture = new ImageIcon(texture_filename).getImage();
+        try
+        {
+            texture = ImageIO.read(new File(texture_filename));
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
     }
     
-    public void load_spritesheet(String texture_filename, int hframes, int vframes) 
+    public BufferedImage get_frame()
     {
-        texture = new ImageIcon(texture_filename).getImage();
-        this.hframes = hframes;
-        this.vframes = vframes;
-
-        BufferedImage a;
-
-        
+        return texture.getSubimage(
+            frame*texture.getWidth()/hframes, 0, texture.getWidth(null)/hframes,
+            texture.getHeight(null)/vframes
+        );
     }
 
     @Override
     public void render(Graphics2D graphics)
     {
         if (texture != null)
-            graphics.drawImage(this.texture, rect.x, rect.y, rect.width, rect.height, null);
+            graphics.drawImage(this.get_frame(), rect.x, rect.y, rect.width, rect.height, null);
         else
         {
             graphics.setColor(Color.BLUE);
